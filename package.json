@@ -9,6 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.4"
+    "astro": "^5.13.4",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0"
   }
 }

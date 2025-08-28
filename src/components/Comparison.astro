@@ -1,0 +1,48 @@
+---
+// Comparison.astro
+const benefits = [
+  {
+    title: "No Hardware Required",
+    description: "Unlike Bluetooth trackers, Bugo works with pure geolocation - no tags to buy or lose."
+  },
+  {
+    title: "Universal Compatibility", 
+    description: "Track anything, anywhere - not limited by Bluetooth range or device compatibility."
+  },
+  {
+    title: "Battery Efficient",
+    description: "Smart location algorithms that don't drain your phone's battery."
+  },
+  {
+    title: "Instant Setup",
+    description: "Add items in seconds, no pairing or configuration needed."
+  },
+  {
+    title: "Cost Effective",
+    description: "One app, unlimited items - no per-item hardware costs."
+  }
+];
+---
+
+<section class="why-better" id="why">
+  <div class="container">
+    <div class="comparison-grid">
+      <div class="comparison-content reveal-left">
+        <h2>Why Choose Bugo?</h2>
+        <ul class="comparison-list">
+          {benefits.map((benefit) => (
+            <li>
+              <strong>{benefit.title}:</strong> {benefit.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="comparison-visual reveal-right">
+        <div class="comparison-phones">
+          <div class="phone-old">Old Way: Tags & Bluetooth</div>
+          <div class="phone-new">Bugo: Pure GPS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

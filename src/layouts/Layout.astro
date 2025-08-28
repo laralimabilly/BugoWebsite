@@ -1,0 +1,68 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Never leave anything behind with Bugo's smart geolocation tracking." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/styles/base.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script">
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/sections.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+  </head>
+  <body>
+    <main id="main-content">
+      <slot />
+    </main>
+    
+    <!-- Scripts - Load GSAP first, then our scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script>
+      // Wait for GSAP to load before initializing
+      window.addEventListener('load', () => {
+        // Load our scripts after GSAP is ready
+        const animationsScript = document.createElement('script');
+        animationsScript.src = '/scripts/animations.js';
+        animationsScript.defer = true;
+        document.head.appendChild(animationsScript);
+        
+        animationsScript.onload = () => {
+          const mainScript = document.createElement('script');
+          mainScript.src = '/scripts/main.js';
+          mainScript.defer = true;
+          document.head.appendChild(mainScript);
+        };
+      });
+    </script>
+    
+    <!-- Analytics placeholder -->
+    <!-- Add your analytics code here -->
+  </body>
+</html>

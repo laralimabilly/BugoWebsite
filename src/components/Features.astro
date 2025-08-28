@@ -1,0 +1,38 @@
+---
+// Features.astro
+const features = [
+  {
+    icon: "📍",
+    title: "Add Your Items",
+    description: "Simply add any item to your tracking list. Bugo automatically captures the location and sets smart distance thresholds."
+  },
+  {
+    icon: "🌍",
+    title: "Location Intelligence", 
+    description: "Our advanced geolocation technology monitors your distance from tracked items without draining your battery."
+  },
+  {
+    icon: "🔔",
+    title: "Smart Reminders",
+    description: "Get timely notifications when you're moving away from your belongings, preventing you from leaving them behind."
+  }
+];
+---
+
+<section class="what-it-does" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>How Bugo Works</h2>
+      <p>Simple, effective, and intelligent. Bugo learns your patterns and keeps track of your belongings using advanced geolocation technology.</p>
+    </div>
+    <div class="features-grid">
+      {features.map((feature, index) => (
+        <div class={`feature-card glass reveal-up stagger-${index + 1}`}>
+          <div class="feature-icon">{feature.icon}</div>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
